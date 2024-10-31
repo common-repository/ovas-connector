@@ -1,0 +1,634 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
+
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+ .api_information .admin_modules {
+	 display: flex;
+	 flex-direction: column;
+	 padding-left: 25px;
+ }
+
+ .api_information .admin_modules .module::before {
+	content: '» ';
+}
+
+/*******************************************************************************
+ADMIN TAB BAR
+*******************************************************************************/
+.wrapper {
+  width: 98%;
+  margin: 0 auto;
+}
+
+.tabs {
+  position: relative;
+  margin: 3rem 0;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+}
+
+.tabs::before,
+.tabs::after {
+  content: "";
+  display: table;
+}
+
+.tabs::after {
+  clear: both;
+}
+
+.tab {
+  flex: 1;
+  height: 70px;
+}
+
+input[type=radio].tab-switch {
+  display: none;
+}
+
+.tab-label {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 0 1.618em;
+  background: #fff;
+  color: #aaa;
+  cursor: pointer;
+  top: 0;
+  text-align: center;
+  line-height: 70px;
+  white-space: nowrap;
+  font-size: 1.5em;
+  font-weight: 600;
+  font-family: "Montserrat";
+  border-bottom: none;
+  z-index: 4;
+}
+
+.tab-switch:checked + .tab-label {
+  background: #fff;
+  color: #aaa;
+  border-bottom: 3px solid #34b7eb;
+}
+
+.tab-label > span.dashicons {
+	font-size: 0.75em;
+	line-height: 35px;
+}
+
+.tab-label > span.dashicons.dashicons-yes-alt {
+	color: green;
+}
+
+.tab-label > span.dashicons.dashicons-marker {
+	color: red;
+}
+
+.tab-label:hover {
+  color: #bbb;
+}
+
+.tab-content {
+  width: 98%;
+  position: absolute;
+  z-index: 2;
+  top: 2.75em;
+  left: 0;
+  background-color: #fff;
+  color: #2c3e50;
+  opacity: 0;
+  padding: 75px 10px 0 10px;
+}
+
+.tab-switch:checked + label + .tab-content {
+  z-index: 3;
+  opacity: 1;
+}
+
+.subtabs {
+	margin: 0;
+}
+
+.subtabs .tab {
+	height: 35px;
+	overflow: hidden;
+	padding-bottom: 5px;
+	margin: 0 10px;
+}
+
+.subtabs .tab-label {
+  height: 100%;
+  padding: 0 0;
+  text-align: center;
+  line-height: 35px;
+  font-size: 1.25em;
+}
+
+.datasourceFields {
+  list-style-type: none;
+}
+
+.datasourceFields li {
+  display: flex;
+}
+
+.addFieldLink {
+  display: inline;
+  width: 100%;
+}
+
+.addFieldLink a {
+	cursor: pointer;
+}
+
+.addFieldLink .popup {
+	border: 1px solid #000;
+	column-count: 3;
+	width: 25%;
+	min-width: 400px;
+	position: absolute;
+	background-color: #fff;
+	z-index: 30;
+	padding: 3px 5px;
+	overflow: hidden;
+}
+
+.addFieldLink .popup.hidden {
+	display: none;
+}
+
+.addFieldLink .popup a{
+	display: block;
+	overflow: hidden;
+}
+
+.addFieldLink .popup a.disabled{
+	color: #ccc;
+	cursor: default;
+}
+
+.removeFieldLink {
+	cursor: pointer;
+}
+
+.fieldLinks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fieldLinks .tabSectionAddField {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.fieldLink, .subfieldLink {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5em 0;
+  align-items: center;
+}
+
+.fieldLink .datalink {
+	display: flex;
+	flex-direction: column;
+}
+
+.fieldLink span[name="apiFieldNameDisplay"] {
+	min-width: 150px;
+}
+
+.fieldLinkContainer.subfields .subfieldLink .datalink {
+	flex-direction: row;
+}
+
+.datalink .fieldLinkContainer {
+	display: flex;
+	flex-direction: row;
+}
+
+.fieldLinkContainer.subfields {
+	flex-direction: column;
+	border-left: 2px solid #505050;
+}
+
+.datalink[data-hassubfields="true"] {
+	display: none;
+}
+
+.sectionHeader {
+	display: inline-block;
+	font-size: 1.5em;
+	font-weight: 600;
+	margin: 0 0 5px 0;
+	width: 100%;
+	padding-bottom: 10px;
+}
+
+.tab-content section {
+	margin: 0 0 50px 0;
+	box-shadow: 0 0 10px 5px rgb(0 0 0 / 5%);
+	padding: 1em;
+}
+
+.apisourcename {
+	padding: 0 0 1em 0;
+}
+
+.apisourcename label {
+	font-size: 1.25em;
+	font-weight: 600;
+}
+
+.addApiLinks {
+	padding: 0.5em 0.5em 0.5em 1em;
+	margin: 0 0 2em 0;
+	border: 1px solid rgb(225 225 225);
+}
+
+.apiFieldLink {
+	width: 15em;
+}
+
+.datasourceFieldLink {
+	width: 15em;
+}
+
+.tab-content th {
+  text-align: left;
+  min-width: 10em;
+}
+
+.tab-content td {
+  vertical-align: top;
+}
+
+.prettyJSON li {
+	margin: 0;
+	padding: 3px;
+}
+
+.prettyJSON > li:nth-child(odd) {
+	background-color: #eee;
+}
+
+.prettyJSON > li:nth-child(even) {
+	background-color: #e8e8e8;
+}
+
+.prettyJSON .key {
+  display: inline-block;
+  min-width: 10em;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.prettyJSON .value {
+  display: inline-block;
+  font-weight: normal;
+  padding-left: 5px;
+  vertical-align: top;
+}
+
+.prettyJSON .value ul {
+	border-left: 1px solid #999;
+	padding-left: 5px;
+}
+
+.responseWrapper {
+	height: 6em;
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.responseWrapper.shaded::before {
+	background: rgb(255,255,255);
+	background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(250,250,250,0) 50%, rgba(248,248,248,1) 100%);
+	content: "\00a0";
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+.responseWrapperAfter {
+	height: 1px;
+/*    border-bottom: 1px solid #999;*/
+	color: #999;
+}
+
+.responseWrapper:hover {
+	cursor: pointer;
+}
+
+/* empty space */
+.responseWrapper::after {
+	content: "\00a0";
+	font: normal 20px/1 'dashicons';
+}
+
+/* down arrow */
+.responseWrapperAfter::after {
+	content: "\f347";
+	font: normal 20px/1 'dashicons';
+	position: absolute;
+	width: 10px;
+	left: 45%;
+	margin-top: -17px;
+}
+
+table.logs {
+	width: 100%;
+	border-collapse: separate;
+	position: relative;
+}
+
+table.logs th {
+	padding-bottom: 5px;
+	border-bottom: 3px solid #34b7eb;
+	background-color: #fff;
+	position: sticky;
+	top: 30px;
+	z-index: 1;
+}
+
+table.logs tr:nth-child(2) td {
+	padding-top: 5px;
+}
+
+table.logs tr:nth-child(even),
+table.logs tr:nth-child(1) {
+	background-color: #f8f8f8;
+}
+
+table.logs.loading {
+	height: 100px;
+	background-image: url("../images/loading.gif");
+	background-position: left top;
+	background-size: 32px 32px;
+	background-repeat: no-repeat;
+	background-color: none;
+}
+
+.logline_logtimestamp {
+	font-weight: 600;
+}
+
+.datasource_image {
+	width: 48px;
+	height: 48px;
+}
+
+.logline_actions a span.dashicons {
+	font-size: 24px;
+}
+
+.logline_logresponse {
+	min-width: 30em;
+	max-width: 30em;
+	width: 30em;
+}
+
+#wpfooter {
+	display: none;
+}
+
+input[type=checkbox].toggle:checked::before {
+	all: unset;
+}
+
+input[type=checkbox].toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+input[type=checkbox].toggle:focus {
+	box-shadow: none;
+	border-color: #b74141;
+}
+
+input[type=checkbox].toggle:checked:focus {
+	box-shadow: none;
+	border-color: #1cb742;
+}
+
+input[type=checkbox].toggle {
+  height: 24px;
+  width: 52px;
+  border-radius: 16px;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  border: 2px solid #b74141;
+  background: linear-gradient(180deg, #ffffff 0%, #efefef 100%);
+  transition: all 0.2s ease;
+}
+
+input[type=checkbox].toggle:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(44, 44, 44, 0.5);
+  transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+}
+
+input[type=checkbox].toggle:checked {
+  border-color: #1cb742;
+}
+
+input[type=checkbox].toggle:checked:after {
+  transform: translatex(23px);
+}
+
+.datasourceStaticValue {
+	display: none;
+	height: 34px;
+}
+
+.apicallresponse .status ul {
+	padding-left: 25px;
+}
+
+.logline_logresponse .dashicons-dismiss {
+	color: red;
+}
+
+.logline_logresponse .dashicons-yes-alt {
+	color: green;
+}
+
+.logline_logresponse .dashicons-marker {
+	color: orange;
+}
+
+.datasourceStaticValueFromApi {
+	width: 250px;
+	padding-right: 25px;
+}
+
+.datasourceStaticValue,
+.datasourceStaticValueFromApi select {
+	min-width: 235px;
+}
+
+.loading {
+	background: #fff url("../images/loading.gif") no-repeat right center;
+	background-position: right 7px center;
+}
+
+select.datasourceFieldLink,
+.fieldLinkContainer .tail-select {
+	padding-right: 15px;
+}
+
+select.error {
+	border: 2px solid red;
+	background-color: #ffe2e2;
+}
+
+.logline_actions a span.dashicons {
+	text-decoration: none;
+}
+
+.tail-select input[type="text"] {
+	padding: 5px 10px;
+}
+
+.tail-select .select-dropdown ul li {
+	padding-left: 20px;
+}
+
+.tail-select .select-dropdown ul li.dropdown-option:before {
+	width: 20px;
+}
+
+.tail-select-container.select-label .select-handle {
+	margin: 1px 1px;
+}
+
+.tail-select .select-dropdown ul li.optgroup-title {
+	color: rgb(48 52 56);
+}
+
+.tail-select .select-dropdown.loading:after {
+	content: '';
+	position: absolute;
+	top: 31px;
+	height: calc(100% - 31px);
+	width: 100%;
+	background: #fff url(../images/loading.gif) no-repeat right center;
+	background-position: center center;
+	background-size: 32px 32px;
+}
+
+#frm_ovas_connect input#submit {
+	padding-right: revert;
+}
+
+#frm_ovas_connect input#submit:disabled {
+	background: url("../images/loading.gif") no-repeat right center !important;
+	background-position: right 7px center;
+	padding-right: 25px;
+}
+
+#frm_ovas_connect .pagination {
+	overflow-y: hidden;
+	overflow-x: scroll;
+	display: flex;
+}
+
+#frm_ovas_connect .pagination .page_button {
+	-webkit-font-smoothing: subpixel-antialiased;
+	display: inline-block;
+	font-size: 1em;
+	min-height: 30px;
+	margin: 0 5px 0.5em 0;
+	padding: 0;
+	height: 2em;
+	line-height: 2em;
+	min-width: 2em;
+	cursor: pointer;
+	border-radius: 3px;
+	white-space: nowrap;
+	text-decoration: none;
+	text-align: center;
+	color: #2271b1;
+	background-color: #fff;
+	border: 1px solid #2271b1;
+}
+
+#frm_ovas_connect .pagination .page_button.current {
+	background: #2271b1;
+	color: #fff;
+	border: 1px solid #2271b1;
+}
+
+#frm_ovas_connect .pagination .page_button:not(.current):hover {
+	filter: brightness(75%);
+}
+
+#frm_ovas_connect .filter {
+	display: inline-block;
+	float: none;
+	padding: 0;
+	margin: 0;
+}
+
+#frm_ovas_connect .filter button {
+	height: 30px;
+	vertical-align: bottom;
+	border: 1px solid #000;
+	border-radius: 4px;
+}
+
+#frm_ovas_connect .limit {
+	display: inline-block;
+	float: right;
+	padding: 0;
+	margin: 0;
+}
+
+/* CF7 Thickbox */
+form[data-id="ovas_connect_tags"] .control-box button {
+	width: 25%;
+	min-width: 8em;
+}
+
+form[data-id="ovas_connect_tags"] .control-box .tb_button_description {
+	display: block;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+.styled-scrollbars {
+	scrollbar-width: auto;
+	scrollbar-color: #2271b1 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+.styled-scrollbars::-webkit-scrollbar {
+	height: 10px;
+}
+
+.styled-scrollbars::-webkit-scrollbar-track {
+	background: #ffffff;
+}
+
+.styled-scrollbars::-webkit-scrollbar-thumb {
+	background-color: #2271b1;
+	border-radius: 8px;
+	border: 3px solid #ffffff;
+}
